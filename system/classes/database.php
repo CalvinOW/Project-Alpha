@@ -3,9 +3,9 @@
     error_reporting(1); 
 
     $hostname = "localhost";
-    $database = "ilpxqbjr_database";
-    $user = "ilpxqbjr_database";
-    $password = "Cw32145@!";
+    $database = "";
+    $user = "";
+    $password = "";
 
   //  $db = mysqli_connect($hostname,$user,$password,$database) or die("Verbinding mislukt!");
 
