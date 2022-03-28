@@ -1,5 +1,4 @@
 <?php include ("./system/classes/functions.php"); ?>
-<?php include_once("./system/classes/loggedin.php"); ?>
 <?php 
 
 ini_set('display_errors', 1);
@@ -9,41 +8,93 @@ error_reporting(E_ALL);
 ?>
 
 <head>
-  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="./assets/css/style.css?v=<?php echo date("H:i:s");?>">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="shortcut icon" href="https://cloudwise.foremo.nl/assets/images/favicon.ico" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 
-  <title><?php export_site_title(); ?> &bull; <?php echo_page_name(); ?> v2</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title><?php export_site_title(); ?> &bull; <?php echo_page_name(); ?> v<?php export_version(); ?></title>
+
+    <!-- Custom fonts for this template-->
+    <link href="./assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="./assets/css/sb-admin-2.min.css" rel="stylesheet">
+
 </head>
 
-<body>
-      <div class="login">
-			<?php 
-				if(isset($errors) && count($errors) > 0)
-				{
-					foreach($errors as $error_msg)
-					{
-						echo '<div class="alert alert-danger">'.$error_msg.'</div>';
-					}
-				}
-			?>
-        <center><img src="./assets/img/<?php export_site_logo(); ?>" style="height: 20%;"></center>
-			<h1>Inloggen op <?php export_site_title(); ?></h1>
-			<form action="" method="post">
-				<label for="username">
-					<i class="fas fa-at"></i>
-				</label>
-				<input type="text" name="email" placeholder="E-mailadres" id="email">
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Wachtwoord" id="password">
-				<input type="submit" name="inloggen" value="Inloggen">
-			</form>
-        <br><br>
-        <center>v<?php export_version(); ?></center>
-		</div>
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                      <?php 
+				                                if(isset($errors) && count($errors) > 0)
+				                                {
+					                                foreach($errors as $error_msg)
+					                                {
+						                                echo '<div class="alert alert-danger">'.$error_msg.'</div>';
+					                                }
+				                                }
+			                                ?>
+                                        <h1 class="h4 text-gray-900 mb-4">Inloggen op <?php export_site_title(); ?></h1>
+                                    </div>
+                                    <form class="user" action="" id="inloggen" method="post">
+                                        <div class="form-group">
+                                            <input type="email" name="email" class="form-control form-control-user"
+                                                id="email" aria-describedby="emailHelp"
+                                                placeholder="Email Adres...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" name="password" class="form-control form-control-user"
+                                                id="password" placeholder="Wachtwoord">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Onthoud Mij</label>
+                                            </div>
+                                        </div>
+                                        <input class="btn btn-primary btn-user btn-block" type="submit" name="inloggen" value="Inloggen">
+                                      <hr>
+                                      2022 &copy; - <?php export_site_title(); ?> (v<?php export_version(); ?>)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="./assets/vendor/jquery/jquery.min.js"></script>
+    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="./assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="./assets/js/sb-admin-2.min.js"></script>
+
 </body>

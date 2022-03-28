@@ -66,6 +66,55 @@ function update_last_ip() {
   
 }
 
+function user_last_ip() {
+  
+  global $hostname;
+  global $database;
+  global $user;
+  global $password;
+  global $db;
+  
+  $user_id = $_SESSION['id'];  
+  $query = $db->prepare("SELECT * FROM activity_log WHERE user_id=$user_id GROUP BY id DESC LIMIT 1,1");
+  $query->execute();
+  $result = $query->fetch();
+  echo $result["time"];
+  
+}
+
+function validate() {
+  
+  global $hostname;
+  global $database;
+  global $user;
+  global $password;
+  global $db;
+  
+  $time = date("Y-m-d H:i:s");
+  $ip = $_SERVER['REMOTE_ADDR'];
+  $query = "INSERT INTO activity_log (user_id, last_ip, time) VALUES (?,?,?)";
+  $statement = $db->prepare($query);
+  $statement->execute([$_SESSION['id'], $ip, $time]);
+  header('location: /dash/main');
+  
+}
+
+function user_avatar() {
+  
+  global $hostname;
+  global $database;
+  global $user;
+  global $password;
+  global $db;
+  
+  $id = $_SESSION['id'];  
+  $query = $db->prepare("SELECT * FROM users WHERE id=$id");
+  $query->execute();
+  $result = $query->fetch();
+  echo $result["avatar"];
+  
+}
+
 if(isset($_POST['inloggen']))
 {
 	if(isset($_POST['email'],$_POST['password']) && !empty($_POST['email']) && !empty($_POST['password']))
@@ -75,8 +124,9 @@ if(isset($_POST['inloggen']))
  
 		if(filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
-      session_start();
-			$sql = "select * from users where email = :email ";
+      session_start();      
+      
+      $sql = "select * from users where email = :email ";
 			$handle = $db->prepare($sql);
 			$params = [':email'=>$email];
 			$handle->execute($params);
@@ -87,30 +137,36 @@ if(isset($_POST['inloggen']))
 				{
 					unset($getRow['password']);
 					$_SESSION = $getRow;
-					header('location: /dash/main');
+					header('location: /dash/validate');
 					exit();
 				}
 				else
 				{
-					$errors[] = "Wrong Email or Password";
+					$errors[] = "Verkeerde email of wachtwoord...";
 				}
 			}
 			else
 			{
-				$errors[] = "Wrong Email or Password";
+				$errors[] = "Verkeerde email of wachtwoord...";
 			}
 			
 		}
 		else
 		{
-			$errors[] = "Email address is not valid";	
+			$errors[] = "Email is niet geldig...";	
 		}
  
 	}
 	else
 	{
-		$errors[] = "Email and Password are required";	
+		$errors[] = "Email en wachtwoord zijn vereist...";	
 	}
  
+}
+
+if(isset($_POST['uitloggen'])) {
+  session_destroy();
+  header("location: /");
+  exit();
 }
 
