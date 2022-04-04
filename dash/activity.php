@@ -16,11 +16,10 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+
     <!-- Custom styles for this template-->
     <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    
-  
+
 </head>
 
 <body id="page-top">
@@ -43,19 +42,18 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link active" href="main">
+            <li class="nav-item">
+                <a class="nav-link" href="main">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            
 
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            <li class="nav-item active">
+                <a class="nav-link active" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                     aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cogs"></i>
                     <span>Instellingen</span>
@@ -69,7 +67,7 @@
                     </div>
                 </div>
             </li>
- <!--
+            <!--
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -170,12 +168,11 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <?php admin_button(); ?>
                                 <a class="dropdown-item" href="./profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profiel
                                 </a>
-                                <a class="dropdown-item" href="./activity">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activiteiten log
                                 </a>
@@ -194,23 +191,28 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    
-                    <div class="row" id="users">
-                        <script>
-                      $(document).ready(function () {
-                        function reload() {
-                        $("#users").load("../system/classes/users.php");
-                      }
-                      setInterval(function() {
-                        reload();
-                      }, 500);
-                        
-                      })
-                      </script>
-                        
+                  <div class="container-fluid">
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Activiteiten logboek</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="dataTable_length"></div></div><div class="col-sm-12 col-md-6"><div id="dataTable_filter" class="dataTables_filter"></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row"><th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 57px;">Sessie ID</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 61px;">IP Adres</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Datum en Tijd</th><th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 49px;">Activiteit</th></tr>
+                                    </thead>
+                                    <tbody>
+                                            <?php export_activity(); ?>
+                                        </tbody>
+                                </table></div></div>
+                            </div>
+                        </div>
                     </div>
 
-                   
+                </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -261,10 +263,12 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
 

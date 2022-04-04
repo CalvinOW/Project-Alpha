@@ -1,5 +1,6 @@
 <?php include_once("../system/classes/loggedin.php"); ?>
 <?php include_once("../system/classes/functions.php"); ?>
+<?php check_admin(); ?>
 
 <head>
 
@@ -12,14 +13,14 @@
     <title><?php export_site_title(); ?> &bull; <?php echo_page_name(); ?> v<?php export_version(); ?></title>
 
     <!-- Custom fonts for this template-->
-    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" no-cache>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+        rel="stylesheet" no-cache>
+
     <!-- Custom styles for this template-->
-    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    
+    <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet" no-cache>
+    <script src="https://code.jquery.com/jquery-1.11.3.js" no-cache></script>
   
 </head>
 
@@ -46,14 +47,14 @@
             <li class="nav-item active">
                 <a class="nav-link active" href="main">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Voorpagina</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
 
-
+<!--
             <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                     aria-controls="collapseTwo">
@@ -68,7 +69,7 @@
                         <a class="collapse-item" href="./activity"><i class="fas fa-list fa-sm fa-fw mr-2"></i>Activiteiten</a>
                     </div>
                 </div>
-            </li>
+            </li>-->
  <!--
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
@@ -170,14 +171,9 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <?php admin_button(); ?>
-                                <a class="dropdown-item" href="./profile">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profiel
-                                </a>
-                                <a class="dropdown-item" href="./activity">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activiteiten log
+                                <a class="dropdown-item" href="/dash/main">
+                                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                                    Dashboard
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -195,18 +191,8 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     
-                    <div class="row" id="users">
-                        <script>
-                      $(document).ready(function () {
-                        function reload() {
-                        $("#users").load("../system/classes/users.php");
-                      }
-                      setInterval(function() {
-                        reload();
-                      }, 500);
-                        
-                      })
-                      </script>
+                    <div class="row">
+                        Content
                         
                     </div>
 
@@ -261,6 +247,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->

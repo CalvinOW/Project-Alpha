@@ -16,11 +16,10 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <script src="../assets/vendor/jquery/jquery.min.js"></script>
+
     <!-- Custom styles for this template-->
     <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-    
-  
+
 </head>
 
 <body id="page-top">
@@ -43,19 +42,18 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link active" href="main">
+            <li class="nav-item">
+                <a class="nav-link" href="main">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            
 
-
-
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+            <li class="nav-item active">
+                <a class="nav-link active" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
                     aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cogs"></i>
                     <span>Instellingen</span>
@@ -69,7 +67,7 @@
                     </div>
                 </div>
             </li>
- <!--
+            <!--
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
@@ -170,8 +168,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <?php admin_button(); ?>
-                                <a class="dropdown-item" href="./profile">
+                                <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profiel
                                 </a>
@@ -194,23 +191,51 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                  <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Kies je status (Huidige status: <?php export_current_user_status(); ?>)</h6>
+                                </div>
+                                <div class="card-body">
+                                    <?php export_user_status(); ?>
+                                </div>
+                            </div>
                     
-                    <div class="row" id="users">
-                        <script>
-                      $(document).ready(function () {
-                        function reload() {
-                        $("#users").load("../system/classes/users.php");
-                      }
-                      setInterval(function() {
-                        reload();
-                      }, 500);
-                        
-                      })
-                      </script>
-                        
+                    
+                    <div class="row">
+
+                        <div class="col-xl-8 col-lg-7">
+
+                            <!-- Area Chart -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Gebruikers instructies</h6>
+                                </div>
+                                <div class="card-body">
+                                    Beste gebruiker,<br><br>
+                                    Het is mogelijk om een eigen foto als profiel avatar te kunnen gebruiken. Om dit te kunnen doen doen je op de oranje knop met daarin 'Selecteer bestand' te klikken.<br>
+                                    Eenmaal op de knop geklikt te hebben verschijnt er een pop-up waarin je een afbeelding kunt selecteren. Selecteer een afbeelding en klik vervolgens op de knop 'Ok'.<br>
+                                    Vervolgens klik je op de blauwe knop met de tekst 'Upload' en je afbeelding zal geupload worden.
+                              </div>
+                            </div>
+
+
+                        </div>
+
+                        <!-- Donut Chart -->
+                        <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Profiel avatar aanpassen</h6>
+                                </div>
+                                <div class="card-body">
+                                    <?php upload_avatar(); ?>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                   
+                </div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -261,10 +286,12 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="../assets/vendor/jquery/jquery.min.js"></script>
     <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
     <!-- Custom scripts for all pages-->
     <script src="../assets/js/sb-admin-2.min.js"></script>
 
