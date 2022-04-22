@@ -1,4 +1,4 @@
-![Logo Project Alpha](https://projectalpha.nl/assets/img/projectalpha-logo.png)
+![Logo Project Alpha](https://projectalpha.nl/assets/img/projectalpha-logo.png | height=100)
 
 # Project Alpha
 
