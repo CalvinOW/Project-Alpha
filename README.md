@@ -1,3 +1,5 @@
+![Logo Project Alpha](https://projectalpha.nl/assets/img/projectalpha-logo.png)
+
 # Project Alpha
 
 A fast CMS system built on HTML, CSS, PHP, MySQL and JS to show per employee what his/her current status is.
